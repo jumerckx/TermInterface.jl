@@ -10,4 +10,4 @@ children(e::Expr) = e.args
 operation(e::Expr) = iscall(e) ? first(children(e)) : error("operation called on a non-function call expression")
 arguments(e::Expr) = iscall(e) ? @view(e.args[2:end]) : error("arguments called on a non-function call expression")
 
-maketerm(::Type{Expr}, head, args, metadata) = Expr(head, args...)
+maketerm(::Type{Expr}, head, args, metadata) = Expr(Symbol(head), args...)
